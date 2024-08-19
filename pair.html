@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pair Code</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+    * {
+            box-sizing: border-box
+        }
+        h1{
+            text-transform: uppercase
+        }
+        body{
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            height: 100vh;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            background: black;
+        }
+        h1 {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.dm-serif-text-regular-italic {
+  font-family: "DM Serif Text", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+        #demo{
+            font-size: 20px
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 80%;
+            border: .5px double black;
+            font-size: 20px;
+            outline: none;
+            border-left: 5px solid black;
+            border-bottom: 5px solid black;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 10px;
+            width: 120px;
+            position: relative;
+            outline: none;
+            border: .5px double black;
+        }
+        input{
+            border-radius: 10px
+        }
+        @property --angle{
+            syntax: "<angle>";
+            initial-value: 0deg;
+            inherits: false;
+        }
+        .btn1::before, .btn2::before{
+            position: absolute;
+            width: 100%;
+            content: '';
+            background-image: conic-gradient(from var(--angle),red 25%, transparent 50%, blue 25%);
+            height: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 2.5px 2.5px;
+            border-radius: 10px;
+            z-index: -3;
+            animation: botin 1s infinite;
+            
+        }
+        .btn1::before, .btn2::before{
+            filter: blur(0.1rem);
+            opacity: 0.9
+        }
+        @keyframes botin{
+            from{
+                --angle: 0deg
+            }
+            to{
+                --angle: 360deg
+            }
+        }
+       .cont{
+           background: white;
+           z-index: 2;
+           padding: 20px;
+           margin: 0 10px;
+           border-top-left-radius: 20px;
+           border-bottom-left-radius: 20px;
+           box-shadow: 2px 2px 7px 5px grey
+       }
+  </style>
+</head>
+<body>
+          <div class="cont">
+                <h1>AbraXas-MD Session Generator</h1>
+                <label for="phoneNumber" id="demo"></label><br>
+              <input type="number" id="number" name="phoneNumber" placeholder="e.g., +2347043283600"required><br><br>
+              <button type="button" class="btn1" onclick="window.open(`/Rex_qrCode`)">Generate QR Code</button>
+        <button type="button" class="btn2" id="submit">Generate Pairing Code</button>
+            
+            
+            <a id="waiting-message" class="centered-text" style="display: none;">please wait while code is being generated</a>
+            <br>
+            <br>
+           <div id="pair"></div>
+         
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>
+  <script>
+    let a = document.getElementById("pair");
+    let b = document.getElementById("submit");
+    let c = document.getElementById("number");
+    let box = document.getElementById("box");
+
+    async function Copy() {
+      let text = document.getElementById("copy").innerText;
+      let obj = document.getElementById("copy");
+      await navigator.clipboard.writeText(obj.innerText.replace('CODE: ', ''));
+      obj.innerText = "COPIED";
+      obj.style = "color:blue;font-weight:bold";
+      obj.size = "5";
+      setTimeout(() => {
+        obj.innerText = text;
+        obj.style = "color: black;font-weight-bold";
+        obj.size = "5";
+      }, 500);
+    }
+
+    b.addEventListener("click", async (e) => {
+      e.preventDefault();
+      if (!c.value) {
+        a.innerHTML = '<a style="color:red;font-weight:bold">Enter your WhatsApp number with Country Code</a><br><br>';
+      } else if (c.value.replace(/[^0-9]/g, "").length < 11) {
+        a.innerHTML = '<a style="color:red;font-weight:bold">Invalid Number</a><br><br>';
+      } else {
+        const Wasi_Tech = c.value.replace(/[^0-9]/g, "");
+        let bb = "";
+        let bbc = "";
+        const cc = Wasi_Tech.split('');
+        cc.map(a => {
+          bbc += a;
+          if (bbc.length == 3) {
+            bb += " " + a;
+          } else if (bbc.length == 8) {
+            bb += " " + a;
+          } else {
+            bb += a;
+          }
+        });
+        c.type = "text";
+        c.value = "+" + bb;
+        c.style = "color:black;font-size:20px";
+        a.innerHTML = '<a style="color:white;font-weight:bold">Please Wait...</a><br><br>';
+        let { data } = await axios(`/code?number=${Wasi_Tech}`);
+        let code = data.code || "Service Unavailable";
+        a.innerHTML = '<font id="copy" onclick="Copy()" style="color:red;font-weight:bold" size="5">CODE: <span style="color:white;font-weight:bold">' + code + '</span></font><br><br><br>';
+      }
+    });
+  </script>
+     <script>
+let i = 0;
+let txt = "Enter Your Whatsapp Number:"; /* The text */
+let speed = 50; /* The speed/duration of the effect in milliseconds */
+
+function typeWriter() {
+  if (i < txt.length) {
+    document.getElementById("demo").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(typeWriter, speed);
+  }
+}
+window.onload = typeWriter;
+</script>
+</body>
+</html>
+
+
