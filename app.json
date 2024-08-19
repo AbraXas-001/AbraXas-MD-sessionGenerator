@@ -2,7 +2,7 @@
     "name": "AbraXas-MD-session-generator",
     "description": "SessionID generator",
     "logo": "",
-    "repository": "https://github.com/Giftedmaurice/giftedmdV2-session-generator",
+    "repository": "https://github.com/AbraXas-001/AbraXas-MD-sessionGenerator",
     "keywords": ["@Rex_Emperor"],
     "success_url": "/", 
     "buildpacks": [{ "url": "https://github.com/heroku/heroku-buildpack-nodejs#latest" } ],
