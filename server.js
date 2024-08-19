@@ -9,7 +9,7 @@ require('events').EventEmitter.defaultMaxListeners = 500;
 app.use('/Rex_qrCode', server);
 app.use('/code', code);
 app.use('/Rex_PairCode',async (req, res, next) => {
-res.sendFile(__path + 'pair/.html')
+res.sendFile(__path + '/pair.html')
 })
 app.use('/',async (req, res, next) => {
 res.sendFile(__path + '/page.html')
