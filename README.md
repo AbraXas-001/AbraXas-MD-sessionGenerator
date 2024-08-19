@@ -1,13 +1,12 @@
-# WhatsApp Session Generator
+# <p align="center"> WhatsApp Session Generator</p>
 
 This project allows you to generate a WhatsApp session ID either through a QR code or an 8-character alphanumeric pairing code. The session ID can be used to deploy a WhatsApp bot.
 
 ## Features
-
 - Generate a QR code for WhatsApp connection.
 - Generate a pairing code as an alternative to the QR code.
 - Automatically send the session ID to the user’s WhatsApp.
-
+  
 ## Setup
 
 1. Clone the repository.
