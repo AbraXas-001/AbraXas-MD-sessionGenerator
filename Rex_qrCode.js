@@ -59,31 +59,22 @@ router.get('/', async (req, res) => {
 				   let session = await Qr_Code_By_Rex_Emperor.sendMessage(Qr_Code_By_Rex_Emperor.user.id, { text: '' + b64data });
 	
 				   let AbraXas_MD_TEXT = `
-*_Session Connected By AbraXas-MD_*
-*STEP: 1*
-    🎉 *Connection Successful!* 🎉
+┏━━━━━━━━━━━━━━
+┃*AbraXas_MD* IS 
+┃SUCCESSFULLY
+┃CONNECTED ✅☠️
+┗━━━━━━━━━━━━━━
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+❶ || Creator = 𖥘 Rex_Emperor 𖥘
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+❷ || WhattsApp Channel = https://whatsapp.com/channel/0029VagoYKJ5kg78Xy1KGq3X
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+Please Follow My Support Channel
+Wanna talk to me?👉 https://t.me/Rex_Emperor_2nd 👈
+▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 
-    Your WhatsApp session has been successfully established. ✔️
 
-    🔑 *Session ID:* ${sessionID}
-
-    Please keep this Session ID safe. You will need to input it into the Heroku environment variables (\SESSION_ID\) during deployment.
-
-    📥 *Deploying Your Bot:*
-    *STEP: 2*
-
-    1. Visit your Heroku dashboard.
-    2. Create a new Heroku app or navigate to an existing one.
-    3. Go to the 'Settings' tab.
-    4. Under 'Config Vars', add a new variable:
-       - \SESSION_ID\: ${sessionID}
-    5. Redeploy your app to use this session.
-
-    ✨ You can now deploy your bot without needing to re-scan the QR code!
-
-    👉 [Join our WhatsApp Group](https://chat.whatsapp.com/BvquURuMoF6FGaIVHIK6hR)   for updates, support, and more!
-     Support? Message the developer: +2347043283600/+2348026733747
-_Don't Forget To Give Star To My Repo_`
+_Don't Forget To Give Star To My Repo_`;
 	 await Qr_Code_By_Rex_Emperor.sendMessage(Qr_Code_By_Rex_Emperor.user.id,{text: AbraXas_MD_TEXT},{quoted:session})
 
 
