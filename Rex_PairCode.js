@@ -18,7 +18,7 @@ function removeFile(FilePath){
     fs.rmSync(FilePath, { recursive: true, force: true })
  };
 router.get('/', async (req, res) => {
-    const id = "AbraXas:" + makeid();
+    const id = "AbraXas:" + makeid(20);
     let num = req.query.number;
         async function PAIR_CODE() {
         const {
