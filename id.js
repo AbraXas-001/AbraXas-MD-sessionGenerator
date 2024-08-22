@@ -1,5 +1,5 @@
 function makeid(num = 4) {
-  let result = "AbraXas";  // Initialize result with the prefix "AbraXas"
+  let result = "";  // Initialize result with the prefix "AbraXas"
   let characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   let charactersLength = characters.length;
 
