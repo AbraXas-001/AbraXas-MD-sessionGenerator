@@ -27,7 +27,7 @@ const {
 	readFile
 } = require("node:fs/promises")
 router.get('/', async (req, res) => {
-	const id = "AbraXas:" + makeid();
+	const id = "AbraXas:" + makeid(20);
 	async function Rex_Emperor_QR_CODE() {
 		const {
 			state,
